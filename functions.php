@@ -12,3 +12,20 @@ function brightred_enqueue_styles() {
 	wp_enqueue_style('brightred-style', get_stylesheet_uri());
 }
 add_action('wp_enqueue_scripts', 'brightred_enqueue_styles');
+
+// Basic Info (requires ACF)
+
+$roots_includes = array(
+	'/functions/basic-info.php',
+);
+
+foreach($roots_includes as $file){
+	
+	if(!$filepath = locate_template($file)) {
+		trigger_error("Error locating `$file` for inclusion!", E_USER_ERROR);
+	}
+
+require_once $filepath;
+}
+
+unset($file, $filepath); 
