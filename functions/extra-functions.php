@@ -22,24 +22,29 @@ add_filter( 'admin_footer_text', 'admin_footer_text' );
 Woo
 ---*/
 
-// Add WooCommerce support if plugin is active
-function brightred_add_woocommerce_support() {
-    if ( class_exists( 'WooCommerce' ) ) {
+if ( class_exists( 'WooCommerce' ) ) {
+
+    // Add WooCommerce support
+    function brightred_add_woocommerce_support() {
         add_theme_support( 'woocommerce' );
     }
-}
-add_action( 'after_setup_theme', 'brightred_add_woocommerce_support' );
+    add_action( 'after_setup_theme', 'brightred_add_woocommerce_support' );
 
+    // Remove "has been added to your basket" message but keep other notices
+    add_filter( 'woocommerce_add_to_cart_message_html', '__return_empty_string' );
 
-// Hide empty basket icon (#basket-icon)
-add_action('wp_head', function() {
-    if ( class_exists('WooCommerce') && WC()->cart ) {
-
-        if ( WC()->cart->get_cart_contents_count() === 0 ) {
-            echo '<style>#basket-icon { display: none !important; }</style>';
+    // Hide empty basket icon (#basket-icon) and output toggle JS in footer
+    function brightred_toggle_basket_icon() {
+        if ( ! WC()->cart ) {
+            return;
         }
 
-        // Output JS for live toggle on cart update
+        $cart_count = WC()->cart->get_cart_contents_count();
+
+        // Inline CSS to hide basket icon if cart is empty
+        if ( $cart_count === 0 ) {
+            echo '<style>#basket-icon { display: none !important; }</style>';
+        }
         ?>
         <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -64,8 +69,8 @@ add_action('wp_head', function() {
         </script>
         <?php
     }
-});
-
+    add_action( 'wp_footer', 'brightred_toggle_basket_icon' );
+}
 
 /*---
 LearnDash
