@@ -31,7 +31,9 @@ if ( class_exists( 'WooCommerce' ) ) {
     add_action( 'after_setup_theme', 'brightred_add_woocommerce_support' );
 
     // Remove "has been added to your basket" message but keep other notices
-    add_filter( 'woocommerce_add_to_cart_message_html', '__return_empty_string' );
+    add_filter( 'wc_add_to_cart_message_html', '__return_empty_string' );
+	add_filter( 'woocommerce_add_to_cart_message_html', '__return_empty_string' );
+
 
     // Hide empty basket icon (#basket-icon) and output toggle JS in footer
     function brightred_toggle_basket_icon() {
