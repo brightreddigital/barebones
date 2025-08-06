@@ -1,7 +1,7 @@
 /*
 Theme Name: Bright Red Barebones
 Author: Bright Red Digital
-Version: 1.5.4
+Version: 1.5.5
 */
 
 /* Globals */
@@ -36,7 +36,7 @@ html, body {
 	height: 100%;
 }
 
-footer {
+.elementor-location-footer {
   margin-top: auto;
 }
 
