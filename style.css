@@ -1,7 +1,7 @@
 /*
 Theme Name: Bright Red Barebones
 Author: Bright Red Digital
-Version: 1.5.3
+Version: 1.5.4
 */
 
 /* Globals */
@@ -27,6 +27,17 @@ html {
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+html, body {
+	height: 100%;
+}
+
+footer {
+  margin-top: auto;
 }
 
 img, picture, video, canvas, svg {
