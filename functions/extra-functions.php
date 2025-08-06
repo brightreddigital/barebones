@@ -24,54 +24,45 @@ Woo
 
 if ( class_exists( 'WooCommerce' ) ) {
 
-    // Add WooCommerce support
-    function brightred_add_woocommerce_support() {
-        add_theme_support( 'woocommerce' );
-    }
-    add_action( 'after_setup_theme', 'brightred_add_woocommerce_support' );
+	function brightred_toggle_basket_icon() {
 
-    // Remove "has been added to your basket" message but keep other notices
-    add_filter( 'wc_add_to_cart_message_html', '__return_empty_string' );
-	add_filter( 'woocommerce_add_to_cart_message_html', '__return_empty_string' );
+	    if ( ! WC()->cart ) {
+	        return;
+	    } ?>
+	    <!-- Hide basket icon by default -->
+	    <style>
+	        #basket-icon {
+	            display: none !important;
+	        }
+	    </style>
 
+	    <!-- Toggle visibility based on cart content -->
+	    <script>
+	    document.addEventListener('DOMContentLoaded', function () {
+	        var basketIcon = document.getElementById('basket-icon');
+	        if (!basketIcon) return;
 
-    // Hide empty basket icon (#basket-icon) and output toggle JS in footer
-    function brightred_toggle_basket_icon() {
-        if ( ! WC()->cart ) {
-            return;
-        }
+	        function updateBasketVisibility() {
+	            var emptyMessage = document.querySelector('.woocommerce-mini-cart__empty-message');
+	            if (!emptyMessage) {
+	                basketIcon.style.display = 'block';
+	            } else {
+	                basketIcon.style.display = 'none';
+	            }
+	        }
 
-        $cart_count = WC()->cart->get_cart_contents_count();
+	        updateBasketVisibility();
 
-        // Inline CSS to hide basket icon if cart is empty
-        if ( $cart_count === 0 ) {
-            echo '<style>#basket-icon { display: none !important; }</style>';
-        }
-        ?>
-        <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var basketIcon = document.getElementById('basket-icon');
-            if (!basketIcon) return;
+	        if (typeof jQuery !== 'undefined') {
+	            jQuery(document.body).on('updated_wc_div updated_cart_totals added_to_cart removed_from_cart', updateBasketVisibility);
+	        }
+	    });
+    </script>
+    
+    <?php }
+	
+	add_action( 'wp_footer', 'brightred_toggle_basket_icon' );
 
-            function updateBasketVisibility() {
-                var emptyMessage = document.querySelector('.woocommerce-mini-cart__empty-message');
-                if (emptyMessage) {
-                    basketIcon.style.display = 'none';
-                } else {
-                    basketIcon.style.display = 'block';
-                }
-            }
-
-            updateBasketVisibility();
-
-            if (typeof jQuery !== 'undefined') {
-                jQuery(document.body).on('updated_wc_div', updateBasketVisibility);
-            }
-        });
-        </script>
-        <?php
-    }
-    add_action( 'wp_footer', 'brightred_toggle_basket_icon' );
 }
 
 /*---
