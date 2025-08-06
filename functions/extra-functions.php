@@ -71,7 +71,7 @@ if ( class_exists( 'WooCommerce' ) ) {
         </script>
         <?php
     }
-    add_action( 'wp_footer', 'brightred_toggle_basket_icon' );
+    add_action( 'wp_head', 'brightred_toggle_basket_icon' );
 }
 
 /*---
