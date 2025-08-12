@@ -181,10 +181,10 @@ select {
   appearance: none;
   -webkit-appearance: none;
   background-color: #fff;
-  background-image: url("data:image/svg+xml;utf8,<svg fill='none' height='20' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M5.5 7.5l4.5 4.5 4.5-4.5' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-image: url("data:image/svg+xml;utf8,<svg fill='none' height='30' width='30' xmlns='http://www.w3.org/2000/svg'><path d='M5.5 7.5l4.5 4.5 4.5-4.5' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>");
   background-repeat: no-repeat;
   background-position: right 0.75em center;
-  background-size: 1em;
+  background-size: 1.5em;
   padding: 0.5em 2em 0.5em 0.75em;
   border: 1px solid #ccc;
   cursor: pointer;
