@@ -1,7 +1,7 @@
 /*
 Theme Name: Bright Red Barebones
 Author: Bright Red Digital
-Version: 1.6.2
+Version: 1.6.3
 */
 
 /* Globals */
@@ -136,6 +136,7 @@ small {
 
 /* Forms */
 
+/* General inputs excluding checkboxes and radios */
 input:not([type="checkbox"]):not([type="radio"]),
 button,
 select,
@@ -241,9 +242,29 @@ input[type="checkbox"],
   cursor: pointer !important;
   position: relative !important;
   border-radius: 0 !important;
-  padding: 0 !important;  /* Remove padding */
-  margin: 0 0.5em 0 0 !important; /* spacing to the right */
+  padding: 0 !important;
+  margin: 0 0.5em 0 0 !important;
   transition: background-color 0.2s, border-color 0.2s;
+  display: inline-block !important;
+  box-sizing: border-box !important;
+}
+
+/* Fixes for Elementor checkbox container and label */
+.elementor-field-type-checkbox .elementor-field-option {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5em !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  width: auto !important;
+}
+
+.elementor-field-type-checkbox label[for^="form-field"] {
+  display: inline !important;
+  margin: 0 !important;
+  font-size: 14px !important;
+  vertical-align: middle !important;
+  cursor: pointer !important;
 }
 
 input[type="checkbox"]:checked,
@@ -277,9 +298,11 @@ input[type="radio"],
   cursor: pointer !important;
   position: relative !important;
   border-radius: 50% !important;
-  padding: 0 !important; /* Remove padding */
-  margin: 0 0.5em 0 0 !important; /* spacing to the right */
+  padding: 0 !important;
+  margin: 0 0.5em 0 0 !important;
   transition: background-color 0.2s, border-color 0.2s;
+  display: inline-block !important;
+  box-sizing: border-box !important;
 }
 
 input[type="radio"]:checked,
@@ -316,11 +339,11 @@ label,
 
 /* Mobile-friendly larger touch targets */
 @media (pointer: coarse) {
-  input,
+  input:not([type="checkbox"]):not([type="radio"]),
   button,
   select,
   textarea,
-  .elementor-field input,
+  .elementor-field input:not([type="checkbox"]):not([type="radio"]),
   .elementor-field button,
   .elementor-field select,
   .elementor-field textarea {
@@ -334,3 +357,4 @@ label,
     height: 1.5em !important;
   }
 }
+
