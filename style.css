@@ -1,7 +1,7 @@
 /*
 Theme Name: Bright Red Barebones
 Author: Bright Red Digital
-Version: 1.6.4
+Version: 1.6.5
 */
 
 /* Globals */
@@ -136,11 +136,27 @@ small {
 
 /* Forms */
 
-/* General inputs excluding checkboxes and radios */
+/* General inputs excluding checkboxes and radios — native + WooCommerce + Elementor */
 input:not([type="checkbox"]):not([type="radio"]),
 button,
 select,
 textarea,
+.woocommerce input:not([type="checkbox"]):not([type="radio"]),
+.woocommerce button,
+.woocommerce select,
+.woocommerce textarea,
+.woocommerce-form input:not([type="checkbox"]):not([type="radio"]),
+.woocommerce-form button,
+.woocommerce-form select,
+.woocommerce-form textarea,
+.woocommerce-checkout input:not([type="checkbox"]):not([type="radio"]),
+.woocommerce-checkout button,
+.woocommerce-checkout select,
+.woocommerce-checkout textarea,
+.woocommerce-account input:not([type="checkbox"]):not([type="radio"]),
+.woocommerce-account button,
+.woocommerce-account select,
+.woocommerce-account textarea,
 .elementor-field input:not([type="checkbox"]):not([type="radio"]),
 .elementor-field button,
 .elementor-field select,
@@ -153,13 +169,30 @@ textarea,
   background-color: #fff;
   box-sizing: border-box !important;
   width: 100% !important;
-  border-radius: 0 !important1
+  border-radius: 0 !important;
 }
 
+/* Focus states (native + WooCommerce + Elementor) */
 input:focus,
 button:focus,
 select:focus,
 textarea:focus,
+.woocommerce input:focus,
+.woocommerce button:focus,
+.woocommerce select:focus,
+.woocommerce textarea:focus,
+.woocommerce-form input:focus,
+.woocommerce-form button:focus,
+.woocommerce-form select:focus,
+.woocommerce-form textarea:focus,
+.woocommerce-checkout input:focus,
+.woocommerce-checkout button:focus,
+.woocommerce-checkout select:focus,
+.woocommerce-checkout textarea:focus,
+.woocommerce-account input:focus,
+.woocommerce-account button:focus,
+.woocommerce-account select:focus,
+.woocommerce-account textarea:focus,
 .elementor-field input:focus,
 .elementor-field button:focus,
 .elementor-field select:focus,
@@ -168,8 +201,12 @@ textarea:focus,
   outline-offset: 2px !important;
 }
 
-/* Select with bigger centered chevron */
+/* Select with bigger centered chevron (native + WooCommerce + Elementor) */
 select,
+.woocommerce select,
+.woocommerce-form select,
+.woocommerce-checkout select,
+.woocommerce-account select,
 .elementor-field select {
   appearance: none !important;
   -webkit-appearance: none !important;
@@ -188,6 +225,10 @@ select,
 
 /* Textarea */
 textarea,
+.woocommerce textarea,
+.woocommerce-form textarea,
+.woocommerce-checkout textarea,
+.woocommerce-account textarea,
 .elementor-field textarea {
   min-height: 5rem !important;
   resize: vertical !important;
@@ -196,6 +237,10 @@ textarea,
 
 /* Checkboxes */
 input[type="checkbox"],
+.woocommerce input[type="checkbox"],
+.woocommerce-form input[type="checkbox"],
+.woocommerce-checkout input[type="checkbox"],
+.woocommerce-account input[type="checkbox"],
 .elementor-field-type-checkbox input[type="checkbox"] {
   appearance: none !important;
   -webkit-appearance: none !important;
@@ -214,7 +259,7 @@ input[type="checkbox"],
   box-sizing: border-box !important;
 }
 
-/* Fixes for Elementor checkbox container and label */
+/* Checkbox label container fixes */
 .elementor-field-type-checkbox .elementor-field-option {
   display: inline-flex !important;
   align-items: center !important;
@@ -232,13 +277,22 @@ input[type="checkbox"],
   cursor: pointer !important;
 }
 
+/* Checked checkboxes */
 input[type="checkbox"]:checked,
+.woocommerce input[type="checkbox"]:checked,
+.woocommerce-form input[type="checkbox"]:checked,
+.woocommerce-checkout input[type="checkbox"]:checked,
+.woocommerce-account input[type="checkbox"]:checked,
 .elementor-field-type-checkbox input[type="checkbox"]:checked {
   background-color: #008000 !important;
   border-color: #008000 !important;
 }
 
 input[type="checkbox"]:checked::after,
+.woocommerce input[type="checkbox"]:checked::after,
+.woocommerce-form input[type="checkbox"]:checked::after,
+.woocommerce-checkout input[type="checkbox"]:checked::after,
+.woocommerce-account input[type="checkbox"]:checked::after,
 .elementor-field-type-checkbox input[type="checkbox"]:checked::after {
   content: "✓" !important;
   position: absolute !important;
@@ -252,6 +306,10 @@ input[type="checkbox"]:checked::after,
 
 /* Radios */
 input[type="radio"],
+.woocommerce input[type="radio"],
+.woocommerce-form input[type="radio"],
+.woocommerce-checkout input[type="radio"],
+.woocommerce-account input[type="radio"],
 .elementor-field-type-radio input[type="radio"] {
   appearance: none !important;
   -webkit-appearance: none !important;
@@ -270,27 +328,39 @@ input[type="radio"],
   box-sizing: border-box !important;
 }
 
+/* Checked radios */
 input[type="radio"]:checked,
+.woocommerce input[type="radio"]:checked,
+.woocommerce-form input[type="radio"]:checked,
+.woocommerce-checkout input[type="radio"]:checked,
+.woocommerce-account input[type="radio"]:checked,
 .elementor-field-type-radio input[type="radio"]:checked {
   background-color: #008000 !important;
   border-color: #008000 !important;
 }
 
 input[type="radio"]:checked::after,
+.woocommerce input[type="radio"]:checked::after,
+.woocommerce-form input[type="radio"]:checked::after,
+.woocommerce-checkout input[type="radio"]:checked::after,
+.woocommerce-account input[type="radio"]:checked::after,
 .elementor-field-type-radio input[type="radio"]:checked::after {
   content: "" !important;
   position: absolute !important;
-  top: 0.18em !important;
-  left: 0.18em !important;
+  top: 0.25em !important;
+  left: 0.25em !important;
   width: 0.6em !important;
   height: 0.6em !important;
   border-radius: 50% !important;
   background: white !important;
 }
 
-
 /* Form group spacing */
 .form-group,
+.woocommerce .form-group,
+.woocommerce-form .form-group,
+.woocommerce-checkout .form-group,
+.woocommerce-account .form-group,
 .elementor-field-group {
   margin-bottom: 1rem !important;
 }
@@ -301,14 +371,39 @@ input[type="radio"]:checked::after,
   button,
   select,
   textarea,
+  .woocommerce input:not([type="checkbox"]):not([type="radio"]),
+  .woocommerce button,
+  .woocommerce select,
+  .woocommerce textarea,
+  .woocommerce-form input:not([type="checkbox"]):not([type="radio"]),
+  .woocommerce-form button,
+  .woocommerce-form select,
+  .woocommerce-form textarea,
+  .woocommerce-checkout input:not([type="checkbox"]):not([type="radio"]),
+  .woocommerce-checkout button,
+  .woocommerce-checkout select,
+  .woocommerce-checkout textarea,
+  .woocommerce-account input:not([type="checkbox"]):not([type="radio"]),
+  .woocommerce-account button,
+  .woocommerce-account select,
+  .woocommerce-account textarea,
   .elementor-field input:not([type="checkbox"]):not([type="radio"]),
   .elementor-field button,
   .elementor-field select,
   .elementor-field textarea {
     font-size: 16px !important;
   }
+
   input[type="checkbox"],
   input[type="radio"],
+  .woocommerce input[type="checkbox"],
+  .woocommerce input[type="radio"],
+  .woocommerce-form input[type="checkbox"],
+  .woocommerce-form input[type="radio"],
+  .woocommerce-checkout input[type="checkbox"],
+  .woocommerce-checkout input[type="radio"],
+  .woocommerce-account input[type="checkbox"],
+  .woocommerce-account input[type="radio"],
   .elementor-field-type-checkbox input[type="checkbox"],
   .elementor-field-type-radio input[type="radio"] {
     width: 1.5em !important;
