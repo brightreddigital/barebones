@@ -1,7 +1,7 @@
 /*
 Theme Name: Bright Red Barebones
 Author: Bright Red Digital
-Version: 1.6.0
+Version: 1.6.1
 */
 
 /* Globals */
@@ -136,121 +136,198 @@ small {
 
 /* Forms */
 
-input, button, select, textarea {
-  font: inherit;
-  color: inherit;
-  margin: 0;
-  padding: 0.5em 0.75em;
-  border: 1px solid #ccc;
-  background-color: #fff;
-  box-sizing: border-box;
-  width: 100%;
-  border-radius: 0;
+/* Common form elements — general and Elementor */
+input,
+button,
+select,
+textarea,
+.elementor-field input,
+.elementor-field button,
+.elementor-field select,
+.elementor-field textarea {
+  font: inherit !important;
+  color: inherit !important;
+  margin: 0 !important;
+  padding: 0.5em 0.75em !important;
+  border: 1px solid #ccc !important;
+  background-color: #fff !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  border-radius: 0 !important;
 }
 
-input:focus, button:focus, select:focus, textarea:focus {
-  outline: 2px solid #005fcc;
-  outline-offset: 2px;
+input:focus,
+button:focus,
+select:focus,
+textarea:focus,
+.elementor-field input:focus,
+.elementor-field button:focus,
+.elementor-field select:focus,
+.elementor-field textarea:focus {
+  outline: 2px solid #005fcc !important;
+  outline-offset: 2px !important;
 }
 
-button, input[type="submit"], input[type="button"], input[type="reset"] {
-  appearance: none;
-  -webkit-appearance: none;
-  background-color: #005fcc;
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-weight: 600;
-  padding: 0.75em 1.25em;
-  line-height: 1.2;
-  text-align: center;
-  border-radius: 0;
+/* Buttons */
+button,
+input[type="submit"],
+input[type="button"],
+input[type="reset"],
+.elementor-field button,
+.elementor-field input[type="submit"],
+.elementor-field input[type="button"],
+.elementor-field input[type="reset"] {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  background-color: #005fcc !important;
+  color: white !important;
+  border: none !important;
+  cursor: pointer !important;
+  font-weight: 600 !important;
+  padding: 0.75em 1.25em !important;
+  line-height: 1.2 !important;
+  text-align: center !important;
+  border-radius: 0 !important;
 }
 
-button:hover, input[type="submit"]:hover {
-  background-color: #004aa0;
+button:hover,
+input[type="submit"]:hover,
+.elementor-field button:hover,
+.elementor-field input[type="submit"]:hover {
+  background-color: #004aa0 !important;
 }
 
-button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
+button:disabled,
+.elementor-field button:disabled {
+  background-color: #ccc !important;
+  cursor: not-allowed !important;
 }
 
-select {
-  appearance: none;
-  -webkit-appearance: none;
-  background-color: #fff;
-  background-image: url("data:image/svg+xml;utf8,<svg fill='none' height='30' width='30' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l8 8 8-8' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>");
-  background-repeat: no-repeat;
-  background-position: right 0.75em center;
-  background-size: 1.5em;
-  padding: 0.5em 2.5em 0.5em 0.75em;
-  border: 1px solid #ccc;
-  cursor: pointer;
-  line-height: 1.5;
-  min-height: 2.5em;
-  border-radius: 0;
+/* Select with bigger centered chevron */
+select,
+.elementor-field select {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  background-color: #fff !important;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='none' height='30' width='30' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l8 8 8-8' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 0.75em center !important;
+  background-size: 1.5em !important;
+  padding: 0.5em 2.5em 0.5em 0.75em !important;
+  border: 1px solid #ccc !important;
+  cursor: pointer !important;
+  line-height: 1.5 !important;
+  min-height: 2.5em !important;
+  border-radius: 0 !important;
 }
 
-textarea {
-  min-height: 5rem;
-  resize: vertical;
-  border-radius: 0;
+/* Textarea */
+textarea,
+.elementor-field textarea {
+  min-height: 5rem !important;
+  resize: vertical !important;
+  border-radius: 0 !important;
 }
 
-input[type="checkbox"], input[type="radio"] {
-  appearance: none;
-  -webkit-appearance: none;
-  width: 1.15em;
-  height: 1.15em;
-  border: 1px solid #666;
-  border-radius: 0;
-  display: inline-block;
-  position: relative;
-  vertical-align: middle;
-  cursor: pointer;
+/* Checkboxes */
+input[type="checkbox"],
+.elementor-field-type-checkbox input[type="checkbox"] {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  width: 1.25em !important;
+  height: 1.25em !important;
+  border: 2px solid #666 !important;
+  background-color: #fff !important;
+  vertical-align: middle !important;
+  cursor: pointer !important;
+  position: relative !important;
+  border-radius: 0 !important;
+  transition: background-color 0.2s, border-color 0.2s;
 }
 
-input[type="checkbox"]:checked::after {
-  content: "✓";
-  font-size: 0.85em;
-  color: #005fcc;
-  position: absolute;
-  top: -2px;
-  left: 2px;
+input[type="checkbox"]:checked,
+.elementor-field-type-checkbox input[type="checkbox"]:checked {
+  background-color: #005fcc !important;
+  border-color: #005fcc !important;
 }
 
-input[type="radio"] {
-  border-radius: 50%;
+input[type="checkbox"]:checked::after,
+.elementor-field-type-checkbox input[type="checkbox"]:checked::after {
+  content: "✓" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0.2em !important;
+  color: white !important;
+  font-size: 1.1em !important;
+  line-height: 1 !important;
+  user-select: none !important;
 }
 
-input[type="radio"]:checked::after {
-  content: "";
-  width: 0.5em;
-  height: 0.5em;
-  background: #005fcc;
-  border-radius: 50%;
-  position: absolute;
-  top: 3px;
-  left: 3px;
+/* Radios */
+input[type="radio"],
+.elementor-field-type-radio input[type="radio"] {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  width: 1.25em !important;
+  height: 1.25em !important;
+  border: 2px solid #666 !important;
+  background-color: #fff !important;
+  vertical-align: middle !important;
+  cursor: pointer !important;
+  position: relative !important;
+  border-radius: 50% !important;
+  transition: background-color 0.2s, border-color 0.2s;
 }
 
-label {
-  display: block;
-  margin-bottom: 0.25rem;
-  font-weight: 500;
+input[type="radio"]:checked,
+.elementor-field-type-radio input[type="radio"]:checked {
+  background-color: #005fcc !important;
+  border-color: #005fcc !important;
 }
 
-.form-group {
-  margin-bottom: 1rem;
+input[type="radio"]:checked::after,
+.elementor-field-type-radio input[type="radio"]:checked::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 0.3em !important;
+  left: 0.3em !important;
+  width: 0.6em !important;
+  height: 0.6em !important;
+  border-radius: 50% !important;
+  background: white !important;
 }
 
+/* Labels */
+label,
+.elementor-field label {
+  display: block !important;
+  margin-bottom: 0.25rem !important;
+  font-weight: 500 !important;
+}
+
+/* Form group spacing */
+.form-group,
+.elementor-field-group {
+  margin-bottom: 1rem !important;
+}
+
+/* Mobile-friendly larger touch targets */
 @media (pointer: coarse) {
-  input, button, select, textarea {
-    font-size: 16px;
+  input,
+  button,
+  select,
+  textarea,
+  .elementor-field input,
+  .elementor-field button,
+  .elementor-field select,
+  .elementor-field textarea {
+    font-size: 16px !important;
   }
-  input[type="checkbox"], input[type="radio"] {
-    width: 1.5em;
-    height: 1.5em;
+  input[type="checkbox"],
+  input[type="radio"],
+  .elementor-field-type-checkbox input[type="checkbox"],
+  .elementor-field-type-radio input[type="radio"] {
+    width: 1.5em !important;
+    height: 1.5em !important;
   }
 }
