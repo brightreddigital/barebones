@@ -1,7 +1,7 @@
 /*
 Theme Name: Bright Red Barebones
 Author: Bright Red Digital
-Version: 1.6.1
+Version: 1.6.2
 */
 
 /* Globals */
@@ -136,12 +136,11 @@ small {
 
 /* Forms */
 
-/* Common form elements — general and Elementor */
-input,
+input:not([type="checkbox"]):not([type="radio"]),
 button,
 select,
 textarea,
-.elementor-field input,
+.elementor-field input:not([type="checkbox"]):not([type="radio"]),
 .elementor-field button,
 .elementor-field select,
 .elementor-field textarea {
@@ -242,6 +241,8 @@ input[type="checkbox"],
   cursor: pointer !important;
   position: relative !important;
   border-radius: 0 !important;
+  padding: 0 !important;  /* Remove padding */
+  margin: 0 0.5em 0 0 !important; /* spacing to the right */
   transition: background-color 0.2s, border-color 0.2s;
 }
 
@@ -276,6 +277,8 @@ input[type="radio"],
   cursor: pointer !important;
   position: relative !important;
   border-radius: 50% !important;
+  padding: 0 !important; /* Remove padding */
+  margin: 0 0.5em 0 0 !important; /* spacing to the right */
   transition: background-color 0.2s, border-color 0.2s;
 }
 
