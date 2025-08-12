@@ -1,7 +1,7 @@
 /*
 Theme Name: Bright Red Barebones
 Author: Bright Red Digital
-Version: 1.6.6
+Version: 1.6.2
 */
 
 /* Globals */
@@ -138,17 +138,19 @@ small {
 
 /* General inputs excluding checkboxes and radios */
 input:not([type="checkbox"]):not([type="radio"]),
+button,
 select,
 textarea,
 .elementor-field input:not([type="checkbox"]):not([type="radio"]),
+.elementor-field button,
 .elementor-field select,
 .elementor-field textarea {
   font: inherit !important;
   color: inherit !important;
   margin: 0 !important;
   padding: 0.5em 0.75em !important;
-  border: 1px solid #ccc;
-  background-color: #fff;
+  border: 1px solid #ccc !important;
+  background-color: #fff !important;
   box-sizing: border-box !important;
   width: 100% !important;
   border-radius: 0 !important;
@@ -166,6 +168,42 @@ textarea:focus,
   outline-offset: 2px !important;
 }
 
+/* Buttons */
+button,
+input[type="submit"],
+input[type="button"],
+input[type="reset"],
+.elementor-field button,
+.elementor-field input[type="submit"],
+.elementor-field input[type="button"],
+.elementor-field input[type="reset"] {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  background-color: #005fcc !important;
+  color: white !important;
+  border: none !important;
+  cursor: pointer !important;
+  font-weight: 600 !important;
+  padding: 0.75em 1.25em !important;
+  line-height: 1.2 !important;
+  text-align: center !important;
+  border-radius: 0 !important;
+}
+
+button:hover,
+input[type="submit"]:hover,
+.elementor-field button:hover,
+.elementor-field input[type="submit"]:hover {
+  background-color: #004aa0 !important;
+}
+
+button:disabled,
+.elementor-field button:disabled {
+  background-color: #ccc !important;
+  cursor: not-allowed !important;
+}
+
+/* Select with bigger centered chevron */
 select,
 .elementor-field select {
   appearance: none !important;
@@ -192,45 +230,24 @@ textarea,
 }
 
 /* Checkboxes */
-/* Checkbox base */
 input[type="checkbox"],
 .elementor-field-type-checkbox input[type="checkbox"] {
   appearance: none !important;
   -webkit-appearance: none !important;
   width: 1.25em !important;
   height: 1.25em !important;
-  background-color: white !important;
+  border: 2px solid #666 !important;
+  background-color: #fff !important;
   vertical-align: middle !important;
   cursor: pointer !important;
   position: relative !important;
   border-radius: 0 !important;
   padding: 0 !important;
   margin: 0 0.5em 0 0 !important;
+  transition: background-color 0.2s, border-color 0.2s;
   display: inline-block !important;
   box-sizing: border-box !important;
-  transition: background-color 0.2s, border-color 0.2s;
 }
-
-/* Checked state */
-input[type="checkbox"]:checked,
-.elementor-field-type-checkbox input[type="checkbox"]:checked {
-  background-color: #34b233 !important;
-}
-
-/* Checkmark */
-input[type="checkbox"]:checked::after,
-.elementor-field-type-checkbox input[type="checkbox"]:checked::after {
-  content: "✓" !important;
-  position: absolute !important;
-  top: 0 !important;
-  left: 0.1em !important;
-  color: white !important;
-  font-size: 1.1em !important;
-  font-weight: 700 !important;
-  line-height: 1 !important;
-  user-select: none !important;
-}
-
 
 /* Fixes for Elementor checkbox container and label */
 .elementor-field-type-checkbox .elementor-field-option {
@@ -248,6 +265,24 @@ input[type="checkbox"]:checked::after,
   font-size: 14px !important;
   vertical-align: middle !important;
   cursor: pointer !important;
+}
+
+input[type="checkbox"]:checked,
+.elementor-field-type-checkbox input[type="checkbox"]:checked {
+  background-color: #005fcc !important;
+  border-color: #005fcc !important;
+}
+
+input[type="checkbox"]:checked::after,
+.elementor-field-type-checkbox input[type="checkbox"]:checked::after {
+  content: "✓" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0.2em !important;
+  color: white !important;
+  font-size: 1.1em !important;
+  line-height: 1 !important;
+  user-select: none !important;
 }
 
 /* Radios */
@@ -272,8 +307,8 @@ input[type="radio"],
 
 input[type="radio"]:checked,
 .elementor-field-type-radio input[type="radio"]:checked {
-  background-color: #34b233 !important;
-  border-color: #34b233 !important;
+  background-color: #005fcc !important;
+  border-color: #005fcc !important;
 }
 
 input[type="radio"]:checked::after,
