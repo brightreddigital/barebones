@@ -225,55 +225,61 @@ if (!function_exists('br_validate_url')) {
  */
 if (!function_exists('br_resolve_login_redirect')) {
     function br_resolve_login_redirect($requested_redirect_to, $user) {
-        // 1) honor explicit redirect_to if safe
-        if (!empty($requested_redirect_to)) {
-            if ($v = br_validate_url($requested_redirect_to)) {
+    // 1) Honor explicit redirect_to if safe
+    if (!empty($requested_redirect_to)) {
+        if ($v = br_validate_url($requested_redirect_to)) {
+            return $v;
+        }
+    }
+
+    // *** NEW: Admins always go to /wp-admin ***
+    if ($user instanceof WP_User && in_array('administrator', (array) $user->roles, true)) {
+        return admin_url();
+    }
+
+    if ($user instanceof WP_User) {
+        // 2) role-based rules (from ACF)
+        if (function_exists('get_field')) {
+            $role_rules = get_field('role_redirects', 'option');
+            if (is_array($role_rules) && !empty($role_rules)) {
+                $user_roles = (array) $user->roles;
+                foreach ($role_rules as $rule) {
+                    $role = isset($rule['role']) ? $rule['role'] : '';
+                    $url  = isset($rule['url'])  ? $rule['url']  : '';
+                    if ($role && in_array($role, $user_roles, true)) {
+                        if ($v = br_validate_url($url)) {
+                            return $v;
+                        }
+                    }
+                }
+            }
+
+            // 3) capability-based rules
+            $cap_rules = get_field('cap_redirects', 'option');
+            if (is_array($cap_rules) && !empty($cap_rules)) {
+                foreach ($cap_rules as $rule) {
+                    $cap = isset($rule['cap']) ? $rule['cap'] : '';
+                    $url = isset($rule['url']) ? $rule['url'] : '';
+                    if ($cap && $user->has_cap($cap)) {
+                        if ($v = br_validate_url($url)) {
+                            return $v;
+                        }
+                    }
+                }
+            }
+
+            // 4) global fallback
+            $acf_login = get_field('login_redirect', 'option');
+            if ($v = br_validate_url($acf_login)) {
                 return $v;
             }
         }
-
-        if ($user instanceof WP_User) {
-            // 2) role-based rules
-            if (function_exists('get_field')) {
-                $role_rules = get_field('role_redirects', 'option');
-                if (is_array($role_rules) && !empty($role_rules)) {
-                    $user_roles = (array) $user->roles;
-                    foreach ($role_rules as $rule) {
-                        $role = isset($rule['role']) ? $rule['role'] : '';
-                        $url  = isset($rule['url'])  ? $rule['url']  : '';
-                        if ($role && in_array($role, $user_roles, true)) {
-                            if ($v = br_validate_url($url)) {
-                                return $v;
-                            }
-                        }
-                    }
-                }
-
-                // 3) capability-based rules
-                $cap_rules = get_field('cap_redirects', 'option');
-                if (is_array($cap_rules) && !empty($cap_rules)) {
-                    foreach ($cap_rules as $rule) {
-                        $cap = isset($rule['cap']) ? $rule['cap'] : '';
-                        $url = isset($rule['url']) ? $rule['url'] : '';
-                        if ($cap && $user->has_cap($cap)) {
-                            if ($v = br_validate_url($url)) {
-                                return $v;
-                            }
-                        }
-                    }
-                }
-
-                // 4) global fallback
-                $acf_login = get_field('login_redirect', 'option');
-                if ($v = br_validate_url($acf_login)) {
-                    return $v;
-                }
-            }
-        }
-
-        // 5) home
-        return home_url('/');
     }
+
+    // 5) home
+    return home_url('/');
+}
+
 }
 
 /* Core WP login (covers most LearnDash logins) */
