@@ -1,7 +1,7 @@
 /*
 Theme Name: Bright Red Barebones
 Author: Bright Red Digital
-Version: 1.8.2
+Version: 1.8.3
 */
 
 /* =========================
@@ -429,3 +429,35 @@ body:not(.woocommerce) input[type="radio"]:checked::after{
 ========================= */
 @media (prefers-reduced-motion: reduce){ *{ transition:none !important; animation:none !important; } }
 @supports (-webkit-touch-callout: none){ input, textarea, select{ font-size:16px; } }
+
+
+/* =========================
+   Fixes
+========================= */
+
+/* Reset rows to block */
+.woocommerce form.login .form-row,
+.woocommerce form.woocommerce-form-login .form-row{
+  display:block;
+}
+
+/* Only make the row that contains the submit button a flex row */
+.woocommerce form.login .form-row:has(.woocommerce-form-login__submit),
+.woocommerce form.woocommerce-form-login .form-row:has(.woocommerce-form-login__submit){
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  flex-wrap:wrap;
+}
+
+/* Fallback if :has() isn’t supported: force wide input rows back to block */
+@supports not (selector(:has(*))) {
+  .woocommerce .woocommerce-form-row.form-row-wide { display:block; }
+}
+
+
+
+
+
+
+
