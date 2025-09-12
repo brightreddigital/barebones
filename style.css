@@ -1,9 +1,12 @@
 /*
 Theme Name: Bright Red Barebones
 Author: Bright Red Digital
-Version: 1.7.1
+Version: 1.7.4
 */
 
+/* -------------------------
+   Reset & Base
+------------------------- */
 *, *::before, *::after { box-sizing: border-box; }
 * { margin: 0; }
 
@@ -11,16 +14,6 @@ html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
-
-.elementor-location-footer {
-  margin-top: auto;
-}
-
-img, picture, video, canvas, svg { display: block; max-width: 100%; height: auto; }
-
-/* -------------------------
-   Typography
-------------------------- */
 
 body {
   line-height: 1.5;
@@ -33,6 +26,13 @@ body {
   color: #222;
 }
 
+.elementor-location-footer {
+  margin-top: auto;
+  background-color: #eee;
+  background-color: var(--e-global-color-secondary, #eee);
+}
+
+img, picture, video, canvas, svg { display: block; max-width: 100%; height: auto; }
 input, button, textarea, select { font: inherit; }
 
 p, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; }
@@ -41,7 +41,7 @@ p:last-child { margin-bottom: 0; }
 #root, #__next { isolation: isolate; }
 
 :root{
-  --h1-min: 2.5rem; --h1-max: 3.15rem;
+  --h1-min: 2.5rem; --h1-max: 3rem;
   --h2-min: 2rem;   --h2-max: 2.5rem;
   --h3-min: 1.5rem; --h3-max: 2rem;
   --h4-min: 1.25rem;--h4-max: 1.5rem;
@@ -73,7 +73,7 @@ p { font-size: 1rem; margin-bottom: 1em; }
 }
 
 /* -------------------------
-   List Styling
+   Lists
 ------------------------- */
 ul, ol {
   margin: 1em 0 1em 1.5em;
@@ -137,12 +137,8 @@ th, td {
   padding: .75em 1em;
   text-align: left;
 }
-thead {
-  background: #f0f0f0;
-}
-tbody tr:nth-child(even) {
-  background: #fafafa;
-}
+thead { background: #f0f0f0; }
+tbody tr:nth-child(even) { background: #fafafa; }
 
 /* -------------------------
    Buttons
@@ -189,7 +185,6 @@ input[type="reset"]:focus,
   box-shadow: 0 0 0 2px rgba(74,144,226,.3);
 }
 
-/* Accessible focus-visible */
 :where(button,[type="submit"],[type="button"],[type="reset"],a,input,textarea,select):focus-visible{
   outline: 2px solid rgba(74,144,226,.9);
   outline-offset: 2px;
@@ -197,7 +192,7 @@ input[type="reset"]:focus,
 }
 
 /* -------------------------
-   Inputs / Textareas / Selects
+   Inputs / Textareas
 ------------------------- */
 input[type="text"],
 input[type="email"],
@@ -206,10 +201,8 @@ input[type="number"],
 input[type="password"],
 input[type="search"],
 textarea,
-select,
 .elementor-form input,
 .elementor-form textarea,
-.elementor-form select,
 .woocommerce form .form-row input.input-text,
 .woocommerce form .form-row textarea,
 .comment-form input,
@@ -231,10 +224,8 @@ select,
 
 input:focus,
 textarea:focus,
-select:focus,
 .elementor-form input:focus,
 .elementor-form textarea:focus,
-.elementor-form select:focus,
 .woocommerce form .form-row input.input-text:focus,
 .woocommerce form .form-row textarea:focus{
   border-color: #4a90e2 !important;
@@ -242,6 +233,9 @@ select:focus,
   outline: none !important;
 }
 
+/* -------------------------
+   Selects (with chevron fix)
+------------------------- */
 select,
 .elementor-form select,
 .woocommerce form .form-row select {
@@ -250,11 +244,11 @@ select,
   background-color: #fff !important;
   background-image: url("data:image/svg+xml;utf8,<svg fill='none' height='40' width='40' xmlns='http://www.w3.org/2000/svg'><path d='M12 16l8 8 8-8' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>") !important;
   background-repeat: no-repeat !important;
-  background-position: right 1em center !important; /* center vertically */
-  background-size: 1em 1em !important; /* make it bigger */
+  background-position: right 1em center !important;
+  background-size: 1.25em !important;
   border: 1px solid #ccc !important;
   border-radius: 0 !important;
-  padding: 0.75em 2.5em 0.75em 0.75em !important; /* extra right padding for icon */
+  padding: 0.5em 2.75em 0.5em 0.75em !important;
   min-height: 2.75em !important;
   line-height: 1.5 !important;
   cursor: pointer !important;
@@ -263,17 +257,60 @@ select,
   color: #333 !important;
   transition: border-color .3s, box-shadow .3s !important;
 }
+select:focus,
+.elementor-form select:focus,
+.woocommerce form .form-row select:focus {
+  border-color: var(--e-global-color-secondary, #aaa) !important;
+  box-shadow: 0 0 0 2px rgba(74,144,226,.2) !important;
+  outline: none !important;
+}
+select:disabled { background-color: #f8f8f8 !important; color: #999 !important; border-color: #ddd !important; cursor: not-allowed !important; }
+select::-ms-expand { display: none; }
 
-
-label,
-.elementor-field-label,
-.woocommerce form label,
-legend{
-  font-weight: 400 !important;
-  font-size: 14px !important;
-  display: block;
-  margin-bottom: 6px !important;
+.elementor-select-wrapper .select-caret-down-wrapper { display: none !important; }
+.elementor-select-wrapper select {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  background-color: #fff !important;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='none' height='40' width='40' xmlns='http://www.w3.org/2000/svg'><path d='M12 16l8 8 8-8' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 1em center !important;
+  background-size: 1.25em !important;
+  border: 1px solid #ccc !important;
+  border-radius: 0 !important;
+  padding: 0.5em 2.75em 0.5em 0.75em !important;
+  min-height: 2.75em !important;
+  line-height: 1.5 !important;
+  cursor: pointer !important;
+  width: 100% !important;
+  font-size: 16px !important;
   color: #333 !important;
+  transition: border-color .3s, box-shadow .3s !important;
+}
+.elementor-select-wrapper select:focus {
+  border-color: var(--e-global-color-secondary, #aaa) !important;
+  box-shadow: 0 0 0 2px rgba(74,144,226,.2) !important;
+  outline: none !important;
+}
+
+/* Select2 */
+.select2-container .select2-selection--single {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  background-color: #fff !important;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='none' height='40' width='40' xmlns='http://www.w3.org/2000/svg'><path d='M12 16l8 8 8-8' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 1em center !important;
+  background-size: 1.25em !important;
+  border: 1px solid #ccc !important;
+  border-radius: 0 !important;
+  height: 44px !important;
+  padding: 0.5em 2.75em 0.5em 0.75em !important;
+  color: #333 !important;
+  font-size: 16px !important;
+  line-height: 1.5 !important;
+  cursor: pointer !important;
+  transition: border-color .3s, box-shadow .3s !important;
 }
 
 /* -------------------------
@@ -284,7 +321,7 @@ input[type="checkbox"] + label,
 input[type="radio"] + label,
 label > input[type="checkbox"],
 label > input[type="radio"]{
-  display: inline-flex;
+  display: inline-flex !important;
   align-items: center !important;
   gap: 8px !important;
   line-height: 1.4 !important;
