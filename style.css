@@ -313,6 +313,51 @@ select::-ms-expand { display: none; }
   transition: border-color .3s, box-shadow .3s !important;
 }
 
+/* 1) Hide Select2's built-in arrow so we only have your SVG chevron */
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  display: none !important;
+}
+
+/* 2) Make the Select2 selection a flex box so the text centers vertically */
+.select2-container .select2-selection--single {
+  box-sizing: border-box;              /* ensure padding doesn't push height weirdly */
+  display: flex !important;            /* key: center content vertically */
+  align-items: center !important;      /* centers the label text */
+  height: 44px !important;             /* your previous target height */
+  min-height: 2.75em !important;
+  padding: 0 2.75em 0 0.75em !important; /* right space for SVG chevron */
+  line-height: 1.5 !important;
+  background-color: #fff !important;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='none' height='40' width='40' xmlns='http://www.w3.org/2000/svg'><path d='M12 16l8 8 8-8' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 1em center !important;
+  background-size: 1.25em !important;
+  border: 1px solid #ccc !important;
+  border-radius: 0 !important;
+}
+
+/* 3) Reset the rendered text span so it doesn’t add extra vertical offset or right padding */
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1.5 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  flex: 1 1 auto !important;  /* lets text take the remaining space nicely */
+}
+
+/* 4) Belt & suspenders: kill any pseudo icons Elementor/Select2 might inject */
+.elementor-select-wrapper .select-caret-down-wrapper,
+.elementor-field-type-select .select-caret-down-wrapper,
+.elementor-field-group .select-caret-down-wrapper,
+.elementor-select-wrapper::after,
+.elementor-field-type-select::after {
+  display: none !important;
+  content: none !important;
+}
+
+
 /* -------------------------
    Checkboxes & Radios
 ------------------------- */
