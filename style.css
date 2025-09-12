@@ -1,7 +1,7 @@
 /*
 Theme Name: Bright Red Barebones
 Author: Bright Red Digital
-Version: 1.8.3
+Version: 1.8.3 
 */
 
 /* =========================
@@ -432,28 +432,83 @@ body:not(.woocommerce) input[type="radio"]:checked::after{
 
 
 /* =========================
-   Fixes
+   My Account → Login only
 ========================= */
-
-/* Reset rows to block */
-.woocommerce form.login .form-row,
-.woocommerce form.woocommerce-form-login .form-row{
+.woocommerce-account .woocommerce form.login .form-row,
+.woocommerce-account .woocommerce form.woocommerce-form-login .form-row{
   display:block;
 }
 
-/* Only make the row that contains the submit button a flex row */
-.woocommerce form.login .form-row:has(.woocommerce-form-login__submit),
-.woocommerce form.woocommerce-form-login .form-row:has(.woocommerce-form-login__submit){
+
+.woocommerce-account .woocommerce form.login .form-row:has(.woocommerce-form-login__submit),
+.woocommerce-account .woocommerce form.woocommerce-form-login .form-row:has(.woocommerce-form-login__submit){
   display:flex;
   align-items:center;
   gap:1rem;
   flex-wrap:wrap;
 }
 
-/* Fallback if :has() isn’t supported: force wide input rows back to block */
+
 @supports not (selector(:has(*))) {
-  .woocommerce .woocommerce-form-row.form-row-wide { display:block; }
+  .woocommerce-account .woocommerce form.login p.form-row{
+    display:flex;
+    align-items:center;
+    gap:1rem;
+    flex-wrap:wrap;
+  }
+
+  .woocommerce-account .woocommerce .woocommerce-form-row.form-row-wide{ display:block; }
 }
+
+.woocommerce-account .woocommerce form.login .form-row:before,
+.woocommerce-account .woocommerce form.woocommerce-form-login .form-row:before{
+  display:none;
+  content:none;
+}
+
+.woocommerce-account .woocommerce .lost_password{ margin-top:.75rem; }
+
+/* =========================
+   Password reveal button
+========================= */
+.woocommerce-account .woocommerce .password-input{
+  position:relative;
+  display:flex;
+  align-items:center;
+}
+.woocommerce-account .woocommerce .password-input input{
+  padding-right:44px !important;
+}
+.woocommerce-account .woocommerce .show-password-input{
+  position:absolute; right:12px;
+  width:36px; height:36px;
+  border:0; background:transparent; cursor:pointer;
+  display:inline-flex; align-items:center; justify-content:center;
+}
+.woocommerce-account .woocommerce .show-password-input:focus-visible{
+  outline:2px solid var(--color-focus); outline-offset:2px;
+}
+/* Eye icon */
+.woocommerce-account .woocommerce .show-password-input::before{
+  content:"";
+  width:24px; height:24px;
+  background-repeat:no-repeat; background-size:contain;
+  background-image: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'>\
+<path d='M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z'/>\
+<circle cx='12' cy='12' r='3'/></svg>");
+}
+
+.woocommerce-account .woocommerce .show-password-input[aria-label="Hide password"]::before{
+  background-image: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'>\
+<path d='M17.94 17.94A10.94 10.94 0 0 1 12 19c-7 0-11-7-11-7a20.86 20.86 0 0 1 5.06-5.94'/>\
+<path d='M1 1l22 22'/>\
+<path d='M9.88 9.88A3 3 0 0 0 12 15a3 3 0 0 0 2.12-.88'/>\
+<path d='M14.12 14.12 9.88 9.88'/>\
+</svg>");
+}
+
 
 
 
