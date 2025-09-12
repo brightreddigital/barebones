@@ -191,6 +191,14 @@ input[type="reset"]:focus,
   box-shadow: none;
 }
 
+.woocommerce form .button { 
+  margin-top: 0 !important;
+  vertical-align: middle;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* -------------------------
    Inputs / Textareas
 ------------------------- */
