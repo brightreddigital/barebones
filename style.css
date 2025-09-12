@@ -24,7 +24,6 @@ html { scroll-behavior: smooth; }
   --color-row-alt: #fafafa;
   --color-focus: rgba(74,144,226,.9);
   --color-focus-shadow: rgba(74,144,226,.2);
-  --brand: var(--e-global-color-secondary, #aaa);
 
   --h1-min: 2.5rem; --h1-max: 3rem;
   --h2-min: 2rem;   --h2-max: 2.5rem;
@@ -32,6 +31,11 @@ html { scroll-behavior: smooth; }
   --h4-min: 1.25rem;--h4-max: 1.5rem;
   --caption-min: .75rem; --caption-max: .875rem;
 }
+
+:where(body, [class*="elementor-kit-"]){
+  --brand: var(--e-global-color-secondary, #aaa);
+}
+
 
 body{
   line-height: 1.5;
