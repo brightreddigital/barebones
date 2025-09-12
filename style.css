@@ -166,7 +166,7 @@ input[type="reset"],
   min-height: 44px;
 }
 
-.elementor-button {
+a.elementor-button {
   display: inline-flex !important;;
   align-items: center !important;
 }
