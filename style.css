@@ -1,7 +1,7 @@
 /*
 Theme Name: Bright Red Barebones
 Author: Bright Red Digital
-Version: 1.7.5
+Version: 1.7.4
 */
 
 /* -------------------------
@@ -150,8 +150,7 @@ input[type="reset"],
 .elementor-button,
 .woocommerce button.button,
 .woocommerce input.button{
-  display: inline-flex;
-  align-items: center;
+  display: inline-block;
   background-color: var(--e-global-color-secondary, #aaa);
   color: #fff;
   font-size: 16px;
@@ -165,6 +164,11 @@ input[type="reset"],
   text-decoration: none;
   transition: background-color .3s, box-shadow .3s;
   min-height: 44px;
+}
+
+.elementor-button {
+  display: inline-flex !important;;
+  align-items: center !important;
 }
 
 button:hover,
