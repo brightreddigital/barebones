@@ -1,7 +1,7 @@
 /*
 Theme Name: Bright Red Barebones
 Author: Bright Red Digital
-Version: 1.8.0
+Version: 1.8.1
 */
 
 /* =========================
@@ -235,7 +235,6 @@ textarea:focus,
 
 /* =========================
    Selects (native, Elementor, Woo)
-   – uses custom SVG chevron
 ========================= */
 select,
 .elementor-form select,
@@ -263,37 +262,17 @@ select:focus,
 select:disabled{ background-color:#f8f8f8 !important; color:#999 !important; border-color:#ddd !important; cursor:not-allowed !important; }
 select::-ms-expand{ display:none; }
 
-/* Hide Elementor duplicate caret variants */
+/* Hide Elementor duplicate caret */
 .elementor-select-wrapper .select-caret-down-wrapper,
 .elementor-field-type-select .select-caret-down-wrapper,
 .elementor-field-group .select-caret-down-wrapper,
 .elementor-select-wrapper::after,
 .elementor-field-type-select::after{ display:none !important; content:none !important; }
 
-/* Elementor select (same chevron, spacing) */
-.elementor-select-wrapper select{
-  appearance:none !important; -webkit-appearance:none !important;
-  background-color: var(--color-bg) !important;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' fill='none'><path d='M12 16l8 8 8-8' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>") !important;
-  background-repeat:no-repeat !important;
-  background-position:right 1em center !important;
-  background-size:1.25em !important;
-  border:1px solid var(--color-border) !important; border-radius:0 !important;
-  padding:.5em 2.75em .5em .75em !important;
-  min-height:2.75em !important; line-height:1.5 !important;
-  cursor:pointer !important; width:100% !important;
-  font-size:16px !important; color: var(--color-muted) !important;
-  transition: border-color .3s, box-shadow .3s !important;
-}
-.elementor-select-wrapper select:focus{
-  border-color: var(--brand) !important;
-  box-shadow:0 0 0 2px var(--color-focus-shadow) !important;
-  outline:none !important;
-}
+.elementor-select-wrapper select{ @extend select; }
 
-/* Select2 (WooCommerce country/state) */
+/* Woo Select2 */
 .select2-container .select2-selection--single{
-  /* hide Select2's built-in arrow and use our SVG */
   appearance:none !important; -webkit-appearance:none !important;
   background-color: var(--color-bg) !important;
   background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' fill='none'><path d='M12 16l8 8 8-8' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>") !important;
@@ -326,6 +305,7 @@ label > input[type="radio"]{
   line-height:1.4 !important; margin-bottom:0 !important; cursor:pointer !important;
 }
 
+/* Custom non-Woo checkboxes/radios */
 body:not(.woocommerce) input[type="checkbox"],
 body:not(.woocommerce) input[type="radio"]{
   appearance:none !important; -webkit-appearance:none !important;
@@ -349,7 +329,7 @@ body:not(.woocommerce) input[type="radio"]:checked::after{
   transform:translate(-50%,-50%) !important;
 }
 
-/* Woo native controls w/ accent-color */
+/* Woo checkboxes/radios */
 .woocommerce form .woocommerce-form__input-checkbox,
 .woocommerce input[type="checkbox"],
 .woocommerce-checkout-payment input[type="radio"],
@@ -361,10 +341,39 @@ body:not(.woocommerce) input[type="radio"]:checked::after{
 .woocommerce input[type="checkbox"]::after,
 .woocommerce input[type="radio"]::after{ content:none !important; }
 
+/* Elementor Acceptance checkboxes */
+.elementor-form .elementor-field-type-acceptance .elementor-field-option{
+  display:flex !important; align-items:flex-start !important; gap:12px !important;
+  flex-wrap:nowrap !important; width:100% !important;
+}
+.elementor-form .elementor-field-type-acceptance .elementor-field-option input[type="checkbox"]{
+  appearance:none !important; -webkit-appearance:none !important;
+  width:18px !important; height:18px !important; min-width:18px !important; min-height:18px !important;
+  margin:2px 0 0 0 !important;
+  border:1px solid var(--color-border) !important; background:#fff !important;
+  border-radius:0 !important; cursor:pointer !important; position:relative !important;
+  flex:0 0 auto !important; padding:0 !important; line-height:1 !important; vertical-align:middle !important;
+}
+.elementor-form .elementor-field-type-acceptance .elementor-field-option input[type="checkbox"]:checked{
+  background: var(--brand) !important; border-color: var(--brand) !important;
+}
+.elementor-form .elementor-field-type-acceptance .elementor-field-option input[type="checkbox"]:checked::after{
+  content:"✓" !important; position:absolute !important; top:50% !important; left:50% !important;
+  transform:translate(-50%,-50%) !important; font-size:12px !important; color:#fff !important; line-height:1 !important;
+}
+.elementor-form .elementor-field-type-acceptance .elementor-field-option > label{
+  display:block !important; margin:0 !important; line-height:1.5 !important; white-space:normal !important;
+}
+.elementor-form .elementor-field-type-acceptance .elementor-field-option > label::before,
+.elementor-form .elementor-field-type-acceptance .elementor-field-option > label::after{
+  content:none !important; display:none !important;
+}
+.elementor-form .elementor-field-type-acceptance input[type="checkbox"]{
+  box-sizing:border-box !important; min-height:18px !important;
+}
+
 /* =========================
    Motion & Mobile
 ========================= */
 @media (prefers-reduced-motion: reduce){ *{ transition:none !important; animation:none !important; } }
-
-/* Prevent iOS zoom on inputs */
 @supports (-webkit-touch-callout: none){ input, textarea, select{ font-size:16px; } }
