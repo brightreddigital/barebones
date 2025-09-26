@@ -6,7 +6,6 @@ function brightred_setup() {
 	add_theme_support('automatic-feed-links');
 	add_theme_support('html5', ['search-form', 'comment-form', 'comment-list', 'gallery', 'caption']);
 
-	// Add custom logo support
     add_theme_support('custom-logo', [
         'height'      => 100,
         'width'       => 300,
@@ -25,6 +24,13 @@ $roots_includes = array(
 	'/functions/basic-info.php',
 	'/functions/extra-functions.php',
 );
+
+add_action('after_setup_theme', function () {
+  register_nav_menus([
+    'primary' => __('Primary Menu', 'bright-red-barebones'),
+    'footer'  => __('Footer Menu',  'bright-red-barebones'),
+  ]);
+});
 
 
 foreach($roots_includes as $file){
