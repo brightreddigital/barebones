@@ -1,7 +1,7 @@
 /*
 Theme Name: Bright Red Barebones
 Author: Bright Red Digital
-Version: 1.8.5
+Version: 1.8.6
 */
 
 /* =========================
@@ -167,9 +167,8 @@ button:hover,
 input[type="submit"]:hover,
 input[type="button"]:hover,
 input[type="reset"]:hover,
-.elementor-button:hover,
 .woocommerce button.button:hover,
-.woocommerce input.button:hover{ opacity:.8; }
+.woocommerce input.button:hover{ opacity:.9; }
 
 button:focus,
 input[type="submit"]:focus,
