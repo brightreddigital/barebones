@@ -1,7 +1,7 @@
 /*
 Theme Name: Bright Red Barebones
 Author: Bright Red Digital
-Version: 1.8.6
+Version: 1.8.7
 */
 
 /* =========================
@@ -84,7 +84,7 @@ p{ font-size:1rem; margin-bottom:1em; }
   background-color: var(--e-global-color-secondary, #eee);
 }
 
-.wp-admin-bar-search {
+#wp-admin-bar-search {
   display: none !important;
 }
 
