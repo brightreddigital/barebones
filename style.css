@@ -84,6 +84,10 @@ p{ font-size:1rem; margin-bottom:1em; }
   background-color: var(--e-global-color-secondary, #eee);
 }
 
+.wp-admin-bar-search {
+  display: none !important;
+}
+
 /* =========================
    Lists
 ========================= */
