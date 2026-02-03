@@ -1,7 +1,9 @@
 /*
 Theme Name: Bright Red Barebones
 Author: Bright Red Digital
+Description: A barebones starter theme built for use with Elementor and ACF.
 Version: 1.9.0
+Text Domain: bright-red-barebones
 */
 
 /* =========================
@@ -485,8 +487,3 @@ body:not(.woocommerce) input[type="radio"]:checked::after{
 .elementor-icon-wrapper {
   display: flex !important;
 }
-
-
-
-
-
