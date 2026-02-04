@@ -2,7 +2,7 @@
 Theme Name: Bright Red Barebones
 Author: Bright Red Digital
 Description: A barebones starter theme built for use with Elementor and ACF.
-Version: 1.9.1
+Version: 1.9.2
 Text Domain: bright-red-barebones
 */
 
@@ -83,6 +83,7 @@ p{ font-size:1rem; margin-bottom:1em; }
 .elementor h1, .elementor h2, .elementor h3, .elementor h4, .elementor h5, .elementor h6,
 .elementor p, .elementor button, .elementor input, .elementor textarea {
   font: inherit;
+  font-size: inherit;
   color: inherit;
   line-height: inherit;
 }
