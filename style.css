@@ -69,7 +69,7 @@ h2{ font-size: clamp(var(--h2-min), 4vw + .5rem, var(--h2-max)); line-height:1.1
 h3{ font-size: clamp(var(--h3-min), 3vw + .5rem, var(--h3-max)); line-height:1.2; font-weight: 600;}
 h4{ font-size: clamp(var(--h4-min), 2vw + .5rem, var(--h4-max)); line-height:1.25; font-weight: 500;}
 
-p{ font-size:1rem; margin-bottom:1em; }
+p{ margin-bottom:1em; }
 
 .caption, small{
   font-size: clamp(var(--caption-min), .5vw + .5rem, var(--caption-max));
